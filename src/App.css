@@ -1,0 +1,184 @@
+/* Main Container */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* 3D View */
+.view-3d {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  /* Important for flex child with overflow */
+  overflow: hidden;
+  /* Ensure vignette stays contained */
+}
+
+/* Cinematic Vignette Overlay */
+.view-3d::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Allow clicking through to the board */
+  background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.6) 90%);
+  z-index: 10;
+}
+
+/* Controls Section */
+.game-controls {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  min-height: 250px;
+  /* Allow growth if content needs it */
+  height: auto;
+  min-height: 250px;
+  background-color: #2a2a2a;
+  border-top: 1px solid #444;
+  padding: 1rem;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-group {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.control-group.left {
+  justify-content: flex-start;
+}
+
+.control-group.right {
+  justify-content: flex-end;
+}
+
+/* Mini Board Styling */
+.mini-board-container {
+  aspect-ratio: 1;
+  height: 100%;
+  padding: 10px;
+  background: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.mini-board-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 100%;
+  height: 100%;
+  border: 2px solid #555;
+}
+
+.square {
+  width: 100%;
+  height: 100%;
+}
+
+.square.light {
+  background-color: #eee;
+}
+
+.square.dark {
+  background-color: #444;
+}
+
+/* Panel Styling */
+.panel {
+  background: #333;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  font-family: 'Courier New', Courier, monospace;
+  /* Sketchy tech font */
+  min-width: 200px;
+}
+
+.status-panel .move-info {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: #000;
+  transform: rotate(-1deg);
+  /* Slight sketch feel */
+}
+
+.status-panel .turn-indicator {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #fff;
+  display: inline-block;
+}
+
+.score-panel {
+  position: relative;
+}
+
+.score-panel .panel-header {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 1px solid #666;
+  padding-bottom: 0.25rem;
+}
+
+.score-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design (Mobile) */
+@media (max-width: 768px) {
+  .game-controls {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  .control-group {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .control-group.left,
+  .control-group.center,
+  .control-group.right {
+    justify-content: center;
+  }
+
+  /* Make mini-board larger on mobile as requested */
+  .mini-board-container {
+    height: 300px;
+    /* Specific height for mobile */
+    max-width: 100%;
+  }
+}

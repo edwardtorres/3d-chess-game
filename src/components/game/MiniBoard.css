@@ -1,0 +1,90 @@
+/* Existing styles + new interaction styles */
+
+.mini-board-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    /* Ensure the board itself is strictly square */
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 450px;
+    /* Increased max size per user request */
+    margin: 0 auto;
+    cursor: pointer;
+    gap: 0;
+    border: 5px solid #4a4a4a;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    background-color: #333;
+}
+
+.square {
+    /* Critical: Ensure every square works */
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: clamp(1rem, 3.5vw, 2.2rem);
+    user-select: none;
+    overflow: hidden;
+    /* Prevent overflow */
+}
+
+.square.light {
+    background-color: #e8ebef;
+    color: black;
+}
+
+.square.dark {
+    background-color: #7d8796;
+    color: white;
+}
+
+.square.selected {
+    background-color: #f7e651 !important;
+}
+
+/* Highlight for valid moves (empty squares) */
+.square.highlight:not(:has(.piece))::after {
+    content: '';
+    width: 25%;
+    height: 25%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    display: block;
+    /* Ensure it renders */
+}
+
+.square.dark.highlight:not(:has(.piece))::after {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Capture highlight */
+.square.highlight:has(.piece) {
+    box-shadow: inset 0 0 0 4px rgba(255, 68, 68, 0.8);
+}
+
+/* Piece Styling */
+.piece {
+    z-index: 1;
+    transform: scale(0.85);
+    line-height: 1;
+    cursor: grab;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piece.w {
+    color: #fff;
+    text-shadow: 0 0 2px #000, 0 0 1px #000;
+}
+
+.piece.b {
+    color: #000;
+}

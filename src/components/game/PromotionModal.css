@@ -1,0 +1,79 @@
+.promotion-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.promotion-modal {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.promotion-modal h3 {
+    margin-top: 0;
+    color: white;
+}
+
+.promotion-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.promotion-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.promotion-btn:hover {
+    transform: translateY(-2px);
+}
+
+.promotion-btn.w {
+    background: #eee;
+    color: black;
+}
+
+.promotion-btn.w:hover {
+    background: #fff;
+}
+
+.promotion-btn.b {
+    background: #444;
+    color: white;
+    border: 1px solid #666;
+}
+
+.promotion-btn.b:hover {
+    background: #555;
+}
+
+.cancel-btn {
+    background: transparent;
+    color: #999;
+    border: 1px solid #444;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    color: white;
+    border-color: #666;
+}
